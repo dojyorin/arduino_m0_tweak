@@ -9,6 +9,10 @@ constexpr auto CLOCK_DIV48 = 48;
 * description.
 */
 void setFrequency(uint8_t f){
+    #ifndef __SAMD21__
+        return;
+    #endif
+
     if(f < FREQ_MIN || FREQ_MAX < f){
         return;
     }

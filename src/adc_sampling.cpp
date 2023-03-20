@@ -4,6 +4,10 @@
 * description.
 */
 void adcSpeed(){
+    #ifndef __SAMD21__
+        return;
+    #endif
+
     ADC->CTRLA.bit.ENABLE = 0;
     while(ADC->STATUS.bit.SYNCBUSY);
 
