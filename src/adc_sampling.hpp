@@ -1,3 +1,3 @@
 #pragma once
 
-// declare
+#include "./deps.arduino_base64.hpp"

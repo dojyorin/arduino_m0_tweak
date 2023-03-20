@@ -1,3 +1,5 @@
+#include "./cpu_clock.hpp"
+
 constexpr auto FREQ_MIN = 48;
 constexpr auto FREQ_MAX = 96;
 constexpr auto CLOCK_DIV1 = 1;

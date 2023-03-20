@@ -1,3 +1,5 @@
+#include "./adc_sampling.hpp"
+
 /**
 * description.
 */

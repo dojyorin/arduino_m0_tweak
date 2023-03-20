@@ -1,3 +1,4 @@
 #pragma once
 
-// declare
+#include "./cpu_clock.hpp"
+#include "./adc_sampling.hpp"
