@@ -1,4 +1,4 @@
 #pragma once
 
-#include "./cpu_clock.hpp"
+#include "./cpu_frequency.hpp"
 #include "./adc_sampling.hpp"
