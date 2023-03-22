@@ -1,7 +1,7 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
-    constexpr auto F_MIN = 48;
+    constexpr auto F_MIN = 16;
     constexpr auto F_MAX = 96;
     constexpr auto CLOCK_DIV1 = 1;
     constexpr auto CLOCK_DIV48 = 48;
