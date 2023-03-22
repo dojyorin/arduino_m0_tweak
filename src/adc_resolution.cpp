@@ -12,7 +12,7 @@ namespace{
 /**
 * description.
 */
-void M0TWEAK::ADC::resolution(uint8_t b){
+void M0TWEAK::M0ADC::resolution(uint8_t b){
     #ifndef __SAMD21__
         return;
     #endif

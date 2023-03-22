@@ -3,11 +3,11 @@
 #include "inttypes.h"
 
 namespace M0TWEAK{
-    namespace CPU{
+    namespace M0CPU{
         void frequency(uint8_t f);
     }
 
-    namespace ADC{
+    namespace M0ADC{
         void resolution(uint8_t b);
     }
 }

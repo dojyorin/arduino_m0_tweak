@@ -10,7 +10,7 @@ namespace{
 /**
 * description.
 */
-void M0TWEAK::CPU::frequency(uint8_t f){
+void M0TWEAK::M0CPU::frequency(uint8_t f){
     #ifndef __SAMD21__
         return;
     #endif
