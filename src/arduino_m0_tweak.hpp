@@ -2,10 +2,10 @@
 
 namespace M0TWEAK{
     namespace CPU{
-        frequency();
+        frequency(uint8_t f);
     }
 
     namespace ADC{
-        resolution();
+        resolution(uint8_t b);
     }
 }
