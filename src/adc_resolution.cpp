@@ -1,9 +1,9 @@
-#include "./adc_sampling.hpp"
+#include "./arduino_m0_tweak.hpp"
 
 /**
 * description.
 */
-void adcSpeed(bool en){
+void M0TWEAK::ADC::resolution(bool en, uint8_t wait){
     #ifndef __SAMD21__
         return;
     #endif

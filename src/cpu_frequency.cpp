@@ -1,4 +1,4 @@
-#include "./cpu_clock.hpp"
+#include "./arduino_m0_tweak.hpp"
 
 constexpr auto FREQ_MIN = 48;
 constexpr auto FREQ_MAX = 96;
@@ -8,7 +8,7 @@ constexpr auto CLOCK_DIV48 = 48;
 /**
 * description.
 */
-void setFrequency(uint8_t f){
+void M0TWEAK::CPU::frequency(uint8_t f){
     #ifndef __SAMD21__
         return;
     #endif

@@ -1,4 +1,11 @@
 #pragma once
 
-#include "./cpu_frequency.hpp"
-#include "./adc_sampling.hpp"
+namespace M0TWEAK{
+    namespace CPU{
+        frequency();
+    }
+
+    namespace ADC{
+        resolution();
+    }
+}
