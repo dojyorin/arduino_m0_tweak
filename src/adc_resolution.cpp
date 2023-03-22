@@ -1,5 +1,9 @@
 #include "./arduino_m0_tweak.hpp"
 
+namespace{
+    constexpr auto SAMPLING_INTERVAL = 0x20;
+}
+
 /**
 * description.
 */
