@@ -3,7 +3,7 @@
 /**
 * description.
 */
-void adcSpeed(){
+void adcSpeed(bool en){
     #ifndef __SAMD21__
         return;
     #endif

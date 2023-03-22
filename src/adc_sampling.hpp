@@ -1,3 +1,5 @@
 #pragma once
 
-#include "./deps.arduino_base64.hpp"
+#include "inttypes.h"
+
+void adcSpeed(bool en);
