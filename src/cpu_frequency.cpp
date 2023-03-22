@@ -1,9 +1,11 @@
 #include "./arduino_m0_tweak.hpp"
 
-constexpr auto FREQ_MIN = 48;
-constexpr auto FREQ_MAX = 96;
-constexpr auto CLOCK_DIV1 = 1;
-constexpr auto CLOCK_DIV48 = 48;
+namespace{
+    constexpr auto FREQ_MIN = 48;
+    constexpr auto FREQ_MAX = 96;
+    constexpr auto CLOCK_DIV1 = 1;
+    constexpr auto CLOCK_DIV48 = 48;
+}
 
 /**
 * description.
