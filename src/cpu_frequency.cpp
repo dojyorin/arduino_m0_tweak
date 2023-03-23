@@ -3,14 +3,14 @@
 namespace{
     constexpr auto F_MIN = 16;
     constexpr auto F_MAX = 96;
-    constexpr auto CS_DIV1 = 1;
-    constexpr auto CS_DIV48 = 48;
+    constexpr auto CLOCK_DIV1 = 1;
+    constexpr auto CLOCK_DIV48 = 48;
 }
 
 /**
 * description.
 */
-void M0TWEAK::M0CPU::frequency(uint8_t f){
+void M0TWEAK::modifyCpuFrequency(uint8_t f){
     #ifndef __SAMD21__
         return;
     #endif
@@ -23,7 +23,7 @@ void M0TWEAK::M0CPU::frequency(uint8_t f){
 
     NVMCTRL->CTRLB.bit.RWS = (f + 23) / 24 - 1;
 
-    GCLK->GENDIV.reg = GCLK_GENDIV_ID(GCLK_CLKCTRL_GEN_GCLK4_Val) | GCLK_GENDIV_DIV(CS_DIV48);
+    GCLK->GENDIV.reg = GCLK_GENDIV_ID(GCLK_CLKCTRL_GEN_GCLK4_Val) | GCLK_GENDIV_DIV(CLOCK_DIV48);
     while(GCLK->STATUS.reg & GCLK_STATUS_SYNCBUSY);
 
     GCLK->GENCTRL.reg = GCLK_GENCTRL_ID(GCLK_CLKCTRL_GEN_GCLK4_Val) | GCLK_GENCTRL_GENEN | GCLK_GENCTRL_SRC_DFLL48M;
@@ -37,7 +37,7 @@ void M0TWEAK::M0CPU::frequency(uint8_t f){
     SYSCTRL->DPLLCTRLA.reg = SYSCTRL_DPLLCTRLA_ENABLE;
     while(!(SYSCTRL->DPLLSTATUS.reg & (SYSCTRL_DPLLSTATUS_CLKRDY | SYSCTRL_DPLLSTATUS_LOCK)));
 
-    GCLK->GENDIV.reg = GCLK_GENDIV_ID(GCLK_CLKCTRL_GEN_GCLK0_Val) | GCLK_GENDIV_DIV(CS_DIV1);
+    GCLK->GENDIV.reg = GCLK_GENDIV_ID(GCLK_CLKCTRL_GEN_GCLK0_Val) | GCLK_GENDIV_DIV(CLOCK_DIV1);
     while(GCLK->STATUS.reg & GCLK_STATUS_SYNCBUSY);
 
     GCLK->GENCTRL.reg = GCLK_GENCTRL_ID(GCLK_CLKCTRL_GEN_GCLK0_Val) | GCLK_GENCTRL_GENEN | GCLK_GENCTRL_SRC_FDPLL;
