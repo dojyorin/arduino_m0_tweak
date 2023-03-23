@@ -7,6 +7,10 @@ namespace{
     constexpr auto RESOLUTION_16BIT = 16;
     constexpr auto WAIT_0US = 0;
     constexpr auto WAIT_16US = 32;
+
+    void regWait(){
+        while(ADC->STATUS.bit.SYNCBUSY);
+    }
 }
 
 /**
@@ -18,7 +22,7 @@ void M0TWEAK::modifyAdcResolution(uint8_t b){
     #endif
 
     ADC->CTRLA.bit.ENABLE = 0;
-    while(ADC->STATUS.bit.SYNCBUSY);
+    regWait();
 
     if(b == RESOLUTION_8BIT){
         ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
@@ -42,5 +46,5 @@ void M0TWEAK::modifyAdcResolution(uint8_t b){
     }
 
     ADC->CTRLA.bit.ENABLE = 1;
-    while(ADC->STATUS.bit.SYNCBUSY);
+    regWait();
 }
