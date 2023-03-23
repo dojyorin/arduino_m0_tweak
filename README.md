@@ -10,8 +10,12 @@ Arduino M0 and some ATSAMD21 board tweak.
 
 # API
 
-# Thirdparty Licenses
-Done thanks to you...
+# Caution!
+**Overclocking should be performed at your own risk after fully understanding the risk.
+If the MCU burns or brick, we are not responsible for any responsibility.**
+
+# Third Party Licenses
+This library is thanks to them, respectful.
 
 <p>
 <details>
