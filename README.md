@@ -2,9 +2,15 @@
 ![actions:test](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/test.yaml/badge.svg)
 ![actions:release](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/release.yaml/badge.svg)
 
-Arduino M0 and some ATSAMD21 board tweak.
+Tweak hardware settings of SAMD21.
+Easily overclock CPU, faster ADC, and more.
 
 # Example
+
+```c++
+M0TWEAK::cpuFrequency(72);
+M0TWEAK::adcResolution(12);
+```
 
 # Details
 
