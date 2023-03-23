@@ -15,7 +15,7 @@ namespace M0TWEAK{
     /**
     * description.
     */
-    void modifyCpuFrequency(uint8_t f){
+    void cpuFrequency(uint8_t f){
         if(f < F_MIN || F_MAX < f){
             return;
         }

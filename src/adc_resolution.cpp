@@ -17,7 +17,7 @@ namespace M0TWEAK{
     /**
     * description.
     */
-    void modifyAdcResolution(uint8_t b){
+    void adcResolution(uint8_t b){
         if(b != R_8BIT && b != R_10BIT && b != R_12BIT && b != R_16BIT){
             return;
         }

@@ -2,7 +2,7 @@
 #include "arduino_m0_tweak.hpp"
 
 void setup(){
-    M0TWEAK::modifyAdcResolution(12);
+    M0TWEAK::adcResolution(12);
 }
 
 void loop(){}
