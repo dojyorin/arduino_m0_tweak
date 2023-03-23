@@ -14,9 +14,9 @@ namespace{
 }
 
 namespace M0TWEAK{
-/**
-* description.
-*/
+    /**
+    * description.
+    */
     void modifyAdcResolution(uint8_t b){
         ADC->CTRLA.bit.ENABLE = 0;
         regWait();
