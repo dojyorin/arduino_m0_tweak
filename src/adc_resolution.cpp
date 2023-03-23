@@ -8,7 +8,7 @@ namespace{
     constexpr auto WAIT_0US = 0;
     constexpr auto WAIT_16US = 32;
 
-    void regWait(){
+    void syncWait(){
         while(ADC->STATUS.bit.SYNCBUSY);
     }
 }
@@ -19,7 +19,7 @@ namespace M0TWEAK{
     */
     void modifyAdcResolution(uint8_t b){
         ADC->CTRLA.bit.ENABLE = 0;
-        regWait();
+        syncWait();
 
         if(b == RESOLUTION_8BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
@@ -43,6 +43,6 @@ namespace M0TWEAK{
         }
 
         ADC->CTRLA.bit.ENABLE = 1;
-        regWait();
+        syncWait();
     }
 }
