@@ -13,34 +13,36 @@ namespace{
     }
 }
 
+namespace M0TWEAK{
 /**
 * description.
 */
-void M0TWEAK::modifyAdcResolution(uint8_t b){
-    ADC->CTRLA.bit.ENABLE = 0;
-    regWait();
+    void modifyAdcResolution(uint8_t b){
+        ADC->CTRLA.bit.ENABLE = 0;
+        regWait();
 
-    if(b == RESOLUTION_8BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
-        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-        ADC->SAMPCTRL.reg = WAIT_0US;
-    }
-    else if(b == RESOLUTION_10BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
-        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-        ADC->SAMPCTRL.reg = WAIT_0US;
-    }
-    else if(b == RESOLUTION_12BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
-        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-        ADC->SAMPCTRL.reg = WAIT_0US;
-    }
-    else if(b == RESOLUTION_16BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
-        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
-        ADC->SAMPCTRL.reg = WAIT_16US;
-    }
+        if(b == RESOLUTION_8BIT){
+            ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
+            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
+            ADC->SAMPCTRL.reg = WAIT_0US;
+        }
+        else if(b == RESOLUTION_10BIT){
+            ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
+            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
+            ADC->SAMPCTRL.reg = WAIT_0US;
+        }
+        else if(b == RESOLUTION_12BIT){
+            ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
+            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
+            ADC->SAMPCTRL.reg = WAIT_0US;
+        }
+        else if(b == RESOLUTION_16BIT){
+            ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
+            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
+            ADC->SAMPCTRL.reg = WAIT_16US;
+        }
 
-    ADC->CTRLA.bit.ENABLE = 1;
-    regWait();
+        ADC->CTRLA.bit.ENABLE = 1;
+        regWait();
+    }
 }
