@@ -11,18 +11,17 @@ namespace{
     }
 }
 
-namespace M0TWEAK{
     /**
     * description.
     */
-    void cpuFrequency(uint8_t f){
-        if(f < F_MIN || F_MAX < f){
+    void M0TWEAK::M0CPU::frequency(uint8_t n){
+        if(n < F_MIN || F_MAX < n){
             return;
         }
 
         USBDevice.detach();
 
-        NVMCTRL->CTRLB.bit.RWS = (f + 23) / 24 - 1;
+        NVMCTRL->CTRLB.bit.RWS = (n + 23) / 24 - 1;
 
         GCLK->GENDIV.reg = GCLK_GENDIV_ID(GCLK_CLKCTRL_GEN_GCLK4_Val) | GCLK_GENDIV_DIV(CLOCK_DIV48);
         syncWait();
@@ -33,7 +32,7 @@ namespace M0TWEAK{
         GCLK->CLKCTRL.reg = GCLK_CLKCTRL_GEN(GCLK_CLKCTRL_GEN_GCLK4_Val) | GCLK_CLKCTRL_ID(GCLK_CLKCTRL_ID_FDPLL_Val) | GCLK_CLKCTRL_CLKEN;
         syncWait();
 
-        SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(f - 1);
+        SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(n - 1);
         SYSCTRL->DPLLCTRLB.reg = SYSCTRL_DPLLCTRLB_REFCLK_GCLK | SYSCTRL_DPLLCTRLB_FILTER(SYSCTRL_DPLLCTRLB_FILTER_DEFAULT_Val);
         SYSCTRL->DPLLCTRLA.reg = SYSCTRL_DPLLCTRLA_ENABLE;
         while(!(SYSCTRL->DPLLSTATUS.reg & (SYSCTRL_DPLLSTATUS_CLKRDY | SYSCTRL_DPLLSTATUS_LOCK)));
@@ -61,4 +60,3 @@ namespace M0TWEAK{
 
         USBDevice.attach();
     }
-}

@@ -13,34 +13,33 @@ namespace{
     }
 }
 
-namespace M0TWEAK{
     /**
     * description.
     */
-    void adcResolution(uint8_t b){
-        if(b != R_8BIT && b != R_10BIT && b != R_12BIT && b != R_16BIT){
+    void M0TWEAK::M0ADC::resolution(uint8_t n){
+        if(n != R_8BIT && n != R_10BIT && n != R_12BIT && n != R_16BIT){
             return;
         }
 
         ADC->CTRLA.bit.ENABLE = 0;
         syncWait();
 
-        if(b == R_8BIT){
+        if(n == R_8BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
             ADC->SAMPCTRL.reg = WAIT_0US;
         }
-        else if(b == R_10BIT){
+        else if(n == R_10BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
             ADC->SAMPCTRL.reg = WAIT_0US;
         }
-        else if(b == R_12BIT){
+        else if(n == R_12BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
             ADC->SAMPCTRL.reg = WAIT_0US;
         }
-        else if(b == R_16BIT){
+        else if(n == R_16BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
             ADC->SAMPCTRL.reg = WAIT_16US;
@@ -49,4 +48,3 @@ namespace M0TWEAK{
         ADC->CTRLA.bit.ENABLE = 1;
         syncWait();
     }
-}

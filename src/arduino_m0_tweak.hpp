@@ -5,6 +5,11 @@
 #include "USB/USBAPI.h"
 
 namespace M0TWEAK{
-    void cpuFrequency(uint8_t f);
-    void adcResolution(uint8_t b);
+    namespace M0CPU{
+        void frequency(uint8_t n);
+    }
+
+    namespace M0ADC{
+        void resolution(uint8_t n);
+    }
 }
