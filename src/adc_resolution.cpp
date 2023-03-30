@@ -24,20 +24,17 @@ namespace{
         ADC->CTRLA.bit.ENABLE = 0;
         syncWait();
 
+        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
+        ADC->SAMPCTRL.reg = WAIT_0US;
+
         if(n == R_8BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
-            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-            ADC->SAMPCTRL.reg = WAIT_0US;
         }
         else if(n == R_10BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
-            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-            ADC->SAMPCTRL.reg = WAIT_0US;
         }
         else if(n == R_12BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
-            ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-            ADC->SAMPCTRL.reg = WAIT_0US;
         }
         else if(n == R_16BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
