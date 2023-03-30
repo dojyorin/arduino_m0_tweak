@@ -1,10 +1,10 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
-    constexpr auto R_8BIT = 8;
-    constexpr auto R_10BIT = 10;
-    constexpr auto R_12BIT = 12;
-    constexpr auto R_16BIT = 16;
+    constexpr auto RES_8BIT = 8;
+    constexpr auto RES_10BIT = 10;
+    constexpr auto RES_12BIT = 12;
+    constexpr auto RES_16BIT = 16;
     constexpr auto WAIT_0US = 0;
     constexpr auto WAIT_16US = 32;
 
@@ -17,7 +17,7 @@ namespace{
     * description.
     */
     void M0TWEAK::M0ADC::resolution(uint8_t n){
-        if(n != R_8BIT && n != R_10BIT && n != R_12BIT && n != R_16BIT){
+        if(n != RES_8BIT && n != RES_10BIT && n != RES_12BIT && n != RES_16BIT){
             return;
         }
 
@@ -27,16 +27,16 @@ namespace{
         ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
         ADC->SAMPCTRL.reg = WAIT_0US;
 
-        if(n == R_8BIT){
+        if(n == RES_8BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
         }
-        else if(n == R_10BIT){
+        else if(n == RES_10BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
         }
-        else if(n == R_12BIT){
+        else if(n == RES_12BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
         }
-        else if(n == R_16BIT){
+        else if(n == RES_16BIT){
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
             ADC->SAMPCTRL.reg = WAIT_16US;

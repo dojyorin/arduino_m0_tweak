@@ -1,8 +1,8 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
-    constexpr auto F_MIN = 16;
-    constexpr auto F_MAX = 96;
+    constexpr auto FREQ_MIN = 16;
+    constexpr auto FREQ_MAX = 96;
     constexpr auto CLOCK_DIV1 = 1;
     constexpr auto CLOCK_DIV48 = 48;
 
@@ -15,7 +15,7 @@ namespace{
     * description.
     */
     void M0TWEAK::M0CPU::frequency(uint8_t n){
-        if(n < F_MIN || F_MAX < n){
+        if(n < FREQ_MIN || FREQ_MAX < n){
             return;
         }
 
