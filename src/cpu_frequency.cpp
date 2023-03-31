@@ -14,9 +14,6 @@ void syncWait(){
 
 }
 
-/**
-* description.
-*/
 void M0TWEAK::M0CPU::frequency(uint8_t n){
     if(n < FREQ_MIN || FREQ_MAX < n){
         return;

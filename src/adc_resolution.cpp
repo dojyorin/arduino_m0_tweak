@@ -16,9 +16,6 @@ void syncWait(){
 
 }
 
-/**
-* description.
-*/
 void M0TWEAK::M0ADC::resolution(uint8_t n){
     if(n != RES_8BIT && n != RES_10BIT && n != RES_12BIT && n != RES_16BIT){
         return;
