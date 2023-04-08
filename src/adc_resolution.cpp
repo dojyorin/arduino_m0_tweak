@@ -1,7 +1,6 @@
 #include "./arduino_m0_tweak.hpp"
 
-namespace
-{
+namespace{
 
 constexpr auto RES_8BIT = 8;
 constexpr auto RES_10BIT = 10;
