@@ -2,8 +2,8 @@
 ![actions:test](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/test.yaml/badge.svg)
 ![actions:release](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/release.yaml/badge.svg)
 
-Tuning the hardware parameters of SAMD21.
-Easily hardware parameter tuning, such as CPU overclocking, ADC acceleration, etc.
+Tweak the hardware behavior of SAMD21.
+Easily hardware behavior tweak, such as CPU overclocking, ADC acceleration, etc.
 
 # Example
 

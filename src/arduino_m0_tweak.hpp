@@ -4,9 +4,13 @@
 #include "sam.h"
 #include "USB/USBAPI.h"
 
+/**
+* Tweak the hardware behavior of SAMD21.
+* @see https://github.com/dojyorin/arduino_m0_tweak
+*/
 namespace M0TWEAK{
     /**
-    * Adjust CPU behavior.
+    * Tweak the CPU.
     */
     namespace M0CPU{
         /**
@@ -22,7 +26,7 @@ namespace M0TWEAK{
     }
 
     /**
-    * Adjust ADC behavior.
+    * Tweak the ADC.
     */
     namespace M0ADC{
         /**
