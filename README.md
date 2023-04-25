@@ -8,8 +8,8 @@ Easily hardware behavior tweak, such as CPU overclocking, ADC acceleration, etc.
 # Example
 
 ```c++
-M0TWEAK::M0CPU::frequency(72);
-M0TWEAK::M0ADC::resolution(12);
+M0TWEAK::M0CPU::changeFrequency(72);
+M0TWEAK::M0ADC::changeResolution(12);
 ```
 
 # Details
