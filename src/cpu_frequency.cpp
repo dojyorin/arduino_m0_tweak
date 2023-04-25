@@ -1,16 +1,14 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
+    constexpr auto FREQ_MIN = 16;
+    constexpr auto FREQ_MAX = 96;
+    constexpr auto CLOCK_DIV1 = 1;
+    constexpr auto CLOCK_DIV48 = 48;
 
-constexpr auto FREQ_MIN = 16;
-constexpr auto FREQ_MAX = 96;
-constexpr auto CLOCK_DIV1 = 1;
-constexpr auto CLOCK_DIV48 = 48;
-
-void syncWait(){
-    while(GCLK->STATUS.reg & GCLK_STATUS_SYNCBUSY);
-}
-
+    void syncWait(){
+        while(GCLK->STATUS.reg & GCLK_STATUS_SYNCBUSY);
+    }
 }
 
 void M0TWEAK::M0CPU::frequency(uint8_t n){

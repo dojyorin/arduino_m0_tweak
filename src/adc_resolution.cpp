@@ -1,18 +1,16 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
+    constexpr auto RES_8BIT = 8;
+    constexpr auto RES_10BIT = 10;
+    constexpr auto RES_12BIT = 12;
+    constexpr auto RES_16BIT = 16;
+    constexpr auto DELAY_0US = 0;
+    constexpr auto DELAY_16US = 32;
 
-constexpr auto RES_8BIT = 8;
-constexpr auto RES_10BIT = 10;
-constexpr auto RES_12BIT = 12;
-constexpr auto RES_16BIT = 16;
-constexpr auto DELAY_0US = 0;
-constexpr auto DELAY_16US = 32;
-
-void syncWait(){
-    while(ADC->STATUS.bit.SYNCBUSY);
-}
-
+    void syncWait(){
+        while(ADC->STATUS.bit.SYNCBUSY);
+    }
 }
 
 void M0TWEAK::M0ADC::resolution(uint8_t n){
