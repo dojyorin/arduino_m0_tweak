@@ -16,9 +16,9 @@ M0TWEAK::M0ADC::changeResolution(12);
 
 # API
 
-# Caution!
-**Overclocking should be performed at your own risk after fully understanding the risk.
-If the MCU burns or brick, we are not responsible for any responsibility.**
+# CAUTION!
+**Overclocking should be performed at your own risk after fully understanding the risk.**
+**If the MCU burns or brick, we are not responsible for any responsibility.**
 
 # Third Party Licenses
 This library is thanks to them, respectful.
