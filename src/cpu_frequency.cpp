@@ -11,7 +11,7 @@ namespace{
     }
 }
 
-void M0TWEAK::M0CPU::frequency(uint8_t f){
+void M0TWEAK::M0CPU::changeFrequency(uint8_t f){
     if(f < FREQ_MIN || FREQ_MAX < f){
         return;
     }

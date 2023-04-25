@@ -18,11 +18,10 @@ namespace M0TWEAK{
         * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
         * Executing this function changes the clock source configuration.
         * Be sure to read the README.
-        * **Caution! Overclock at your own risk!**
-        * @param f CPU Frequency (MHz)
-        * @see https://github.com/dojyorin/arduino_m0_tweak
+        * [CAUTION] Overclock at your own risk!
+        * @param f CPU frequency (MHz)
         */
-        void frequency(uint8_t f);
+        void changeFrequency(uint8_t f);
     }
 
     /**
@@ -32,6 +31,6 @@ namespace M0TWEAK{
         /**
         * @param n Sampling resolution (bits)
         */
-        void resolution(uint8_t n);
+        void changeResolution(uint8_t n);
     }
 }
