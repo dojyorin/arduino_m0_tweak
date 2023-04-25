@@ -7,7 +7,7 @@ namespace{
     constexpr auto CLOCK_DIV48 = 48;
 
     void syncWait(){
-        while(GCLK->STATUS.reg & GCLK_STATUS_SYNCBUSY);
+        while(GCLK->STATUS.bit.SYNCBUSY);
     }
 }
 
