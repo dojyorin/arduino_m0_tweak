@@ -19,10 +19,10 @@ namespace M0TWEAK{
         * Executing this function changes the clock source configuration.
         * Be sure to read the README.
         * **Caution! Overclock at your own risk!**
-        * @param n CPU Frequency (MHz)
+        * @param f CPU Frequency (MHz)
         * @see https://github.com/dojyorin/arduino_m0_tweak
         */
-        void frequency(uint8_t n);
+        void frequency(uint8_t f);
     }
 
     /**
