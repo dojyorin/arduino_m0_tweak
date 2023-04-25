@@ -18,8 +18,8 @@ namespace M0TWEAK{
         * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
         * Executing this function changes the clock source configuration.
         * Be sure to read the README.
-        * [CAUTION] Overclock at your own risk!
-        * @param f CPU frequency (MHz)
+        * <CAUTION> Overclock at your own risk!
+        * @param f CPU frequency.
         */
         void changeFrequency(uint8_t f);
     }
@@ -29,7 +29,7 @@ namespace M0TWEAK{
     */
     namespace M0ADC{
         /**
-        * @param n Sampling resolution (bits)
+        * @param n Number of sampling bits.
         */
         void changeResolution(uint8_t n);
     }
