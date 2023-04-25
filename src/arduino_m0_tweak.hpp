@@ -29,6 +29,9 @@ namespace M0TWEAK{
     */
     namespace M0ADC{
         /**
+        * Change the ADC sampling resolution.
+        * Configurable value is `8` / `10` / `12` / `16` bits.
+        * Only in `16` bits operation, it samples twice and output the average value.
         * @param n Number of sampling bits.
         */
         void changeResolution(uint8_t n);

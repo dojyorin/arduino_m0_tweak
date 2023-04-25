@@ -32,6 +32,9 @@ Configurable range is `16` ~ `96` MHz in `1` MHz steps.
 - Result
     - `void`
 
+Change the ADC sampling resolution.
+Configurable value is `8` / `10` / `12` / `16` bits.
+
 # CAUTION!
 **Overclocking should be performed at your own risk after fully understanding the risk.**
 **If the MCU burns or brick, we are not responsible for any responsibility.**
