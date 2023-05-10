@@ -1,7 +1,7 @@
 #include "arduino_m0_tweak.hpp"
 
 void setup(){
-    M0TWEAK::M0CPU::changeFrequency(72);
+    m0tweak::m0cpu::setFrequency(72);
 }
 
 void loop(){}

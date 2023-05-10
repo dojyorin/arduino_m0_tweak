@@ -8,11 +8,11 @@
 * Tweak the hardware behavior of SAMD21.
 * @see https://github.com/dojyorin/arduino_m0_tweak
 */
-namespace M0TWEAK{
+namespace m0tweak{
     /**
-    * Tweak the CPU.
+    * Tweak CPU.
     */
-    namespace M0CPU{
+    namespace m0cpu{
         /**
         * Change the operating frequency of CPU.
         * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
@@ -25,9 +25,9 @@ namespace M0TWEAK{
     }
 
     /**
-    * Tweak the ADC.
+    * Tweak ADC.
     */
-    namespace M0ADC{
+    namespace m0adc{
         /**
         * Change the ADC sampling resolution.
         * Configurable value is `8` / `10` / `12` / `16` bits.

@@ -8,8 +8,8 @@ Easily hardware behavior tweak, such as CPU overclocking, ADC acceleration, etc.
 # Example
 
 ```c++
-M0TWEAK::M0CPU::changeFrequency(72);
-M0TWEAK::M0ADC::changeResolution(12);
+m0tweak::m0cpu::setFrequency(72);
+m0tweak::m0adc::setResolution(12);
 ```
 
 # Details
@@ -17,7 +17,7 @@ The only export of this library will be [`arduino_m0_tweak.hpp`](./src/arduino_m
 Other source files are for internal use and should not normally be include.
 
 # API
-## `M0TWEAK::M0CPU::changeFrequency(f)`
+## `m0tweak::m0cpu::setFrequency(f)`
 - Arguments
     - `f` : `uint8_t` ... CPU frequency.
 - Result
@@ -26,7 +26,7 @@ Other source files are for internal use and should not normally be include.
 Change the operating frequency of CPU.
 Configurable range is `16` ~ `96` MHz in `1` MHz steps.
 
-## `M0TWEAK::M0ADC::changeResolution(n)`
+## `m0tweak::m0adc::setResolution(n)`
 - Arguments
     - `n` : `uint8_t` ... Number of sampling bits.
 - Result

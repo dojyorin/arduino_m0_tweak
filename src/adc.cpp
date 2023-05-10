@@ -13,7 +13,7 @@ namespace{
     }
 }
 
-void M0TWEAK::M0ADC::changeResolution(uint8_t n){
+void m0tweak::m0adc::setResolution(uint8_t n){
     if(n != RES_8BIT && n != RES_10BIT && n != RES_12BIT && n != RES_16BIT){
         return;
     }
