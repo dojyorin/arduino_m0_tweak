@@ -21,7 +21,7 @@ namespace m0tweak{
         * <CAUTION> Overclock at your own risk!
         * @param f CPU frequency.
         */
-        void changeFrequency(uint8_t f);
+        void setFrequency(uint8_t f);
     }
 
     /**
@@ -34,6 +34,6 @@ namespace m0tweak{
         * Only in `16` bits operation, it samples twice and output the average value.
         * @param n Number of sampling bits.
         */
-        void changeResolution(uint8_t n);
+        void setResolution(uint8_t n);
     }
 }
