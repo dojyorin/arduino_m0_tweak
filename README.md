@@ -42,14 +42,12 @@ Configurable value is `8` / `10` / `12` / `16` bits.
 # Third Party Licenses
 This library is thanks to them, respectful.
 
-<p>
 <details>
-<summary>Show more details...</summary>
-<p>
+<summary>TestOverclock</summary>
 
-## TestOverclock
 - https://next-hack.com/index.php/2020/02/12/overclocking-an-arduino-zero-or-any-atsamd21
 
+```text
 TestOverclock: a test sketch to overclock the ATSAMD21
 
 Copyright 2020 Nicola Wrachien www.next-hack.com
@@ -59,10 +57,17 @@ This program is free software; you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+```
 
-## AdcBooster
+</details>
+
+<details>
+<summary>AdcBooster</summary>
+
 - https://synapse.kyoto/tips/AdcBooster/page001.html
 
-</p>
+```text
+license.
+```
+
 </details>
-</p>
