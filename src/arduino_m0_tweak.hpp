@@ -16,7 +16,9 @@ namespace m0tweak{
         /**
         * Change the operating frequency of CPU.
         * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
-        * !!CAUTION!! Overclock at your own risk! Be sure to read the README!
+        * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
+        * **I take no responsibility if the MCU burns or bricks.**
+        * **Be sure to read the README.**
         * @param f CPU frequency.
         * @see https://github.com/dojyorin/arduino_m0_tweak/tree/dev#overclock
         */
