@@ -68,6 +68,14 @@ The hardware resolution of SAMD21 is 12bit, but by using the average output, the
 
 This library provides function to set single output and no wait when the resolution is 8, 10, or 12 bits, and average output and set the wait to 16 clocks when the resolution is 16 bits.
 
+```mermaid
+flowchart LR
+
+ADC --> r{Resolution}
+r --"8/10/12 bits"--> a["Output: Single\nWait: 0"]
+r --"16 bits"--> b["Output: Average\nWait: 16 clock"]
+```
+
 # API
 ## `m0tweak::m0cpu::setFrequency(f)`
 - Arguments
