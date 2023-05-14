@@ -58,13 +58,13 @@ DFLL --"48MHz"--> GCLK5 --"1/1"--> USB
 ```
 
 ## ADC
-SAMD21 normally performs two consecutive 10-bit resolution samplings and returns the average value.
+SAMD21 normally performs two consecutive 10 bits resolution samplings and returns the average value.
 
 There is 31.5 clock wait between samples to get the average value.
 
 As result, sampling may feel slower than other MCUs in many situations.
 
-The hardware resolution of SAMD21 is 12bit, but by using the average output, the resolution can be artificially increased to 16bit.
+The hardware resolution of SAMD21 is 12 bits, but by using the average output, the resolution can be artificially increased to 16 bits.
 
 This library provides function to set single output and no wait when the resolution is 8, 10, or 12 bits, and average output and set the wait to 16 clocks when the resolution is 16 bits.
 
