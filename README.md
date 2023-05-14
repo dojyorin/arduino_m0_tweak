@@ -16,6 +16,47 @@ m0tweak::m0adc::setResolution(12);
 The only export of this library will be [`arduino_m0_tweak.hpp`](./src/arduino_m0_tweak.hpp).
 Other source files are for internal use and should not normally be include.
 
+# OverClock
+**!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
+**I take no responsibility if the MCU burns or bricks.**
+
+I tried simple serialport communication program on my board (Feather M0) and it worked up to 78MHz, but when set it to 80MHz the serialport connection broke.
+
+The ATSAM series clock supply system is divided into 3 stages.
+
+1. "Clock Source" that generates (crystal or PLL) the clock.
+2. "Clock Generator" that adjust (prescale, etc.) the clock.
+3. "Peripherals" that use clock.
+
+The SAMD21 uses clock source that always outputs 48MHz, usually called "DFLL", and clock generator called "GCLK0" to generate a 48MHz core clock.
+
+SAMD21 also has clock source called "FDPLL" that can output any clock up to 96MHz, although it is not used in normal operation.
+
+You can overclock up to 96MHz by changing the clock source used by the core clock on the sketch to FDPLL.
+
+If only the clock source is changed, GCLK0 is still used as the clock generator, but GCLK0 is shared with various peripherals such as USB in addition to the core clock.
+
+Set the peripheral to use different clock generator to prevent the peripheral from malfunctioning due to clock fluctuations on GCLK0.
+
+In this library, executing the core clock setting function configures to use "GCLK5" as the clock generator for USB.
+
+**Before**
+
+```mermaid
+flowchart LR
+
+DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
+```
+
+**After**
+
+```mermaid
+flowchart LR
+
+DFLL --"48MHz"--> GCLK4 --"1/48"--> FDPLL --"1~96MHz"--> GCLK0 --"1/1"--> CPU
+DFLL --"48MHz"--> GCLK5 --"1/1"--> USB
+```
+
 # API
 ## `m0tweak::m0cpu::setFrequency(f)`
 - Arguments
@@ -34,10 +75,6 @@ Configurable range is `16` ~ `96` MHz in `1` MHz steps.
 
 Change the ADC sampling resolution.
 Configurable value is `8` / `10` / `12` / `16` bits.
-
-# CAUTION!
-**Overclocking should be performed at your own risk after fully understanding the risk.**
-**If the MCU burns or brick, we are not responsible for any responsibility.**
 
 # Third Party Licenses
 This library is thanks to them, respectful.
