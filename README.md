@@ -16,7 +16,7 @@ m0tweak::m0adc::setResolution(12);
 The only export of this library will be [`arduino_m0_tweak.hpp`](./src/arduino_m0_tweak.hpp).
 Other source files are for internal use and should not normally be include.
 
-# OverClock
+## OverClock
 **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
 **I take no responsibility if the MCU burns or bricks.**
 
@@ -56,6 +56,17 @@ flowchart LR
 Crystal --> DFLL --"48MHz"--> GCLK4 --"1/48"--> FDPLL --"1~96MHz"--> GCLK0 --"1/1"--> CPU
 DFLL --"48MHz"--> GCLK5 --"1/1"--> USB
 ```
+
+## ADC
+SAMD21 normally performs two consecutive 10-bit resolution samplings and returns the average value.
+
+There is 31.5 clock wait between samples to get the average value.
+
+As result, sampling may feel slower than other MCUs in many situations.
+
+The hardware resolution of SAMD21 is 12bit, but by using the average output, the resolution can be artificially increased to 16bit.
+
+This library provides function to set single output and no wait when the resolution is 8, 10, or 12 bits, and average output and set the wait to 16 clocks when the resolution is 16 bits.
 
 # API
 ## `m0tweak::m0cpu::setFrequency(f)`
