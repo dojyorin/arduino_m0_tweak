@@ -24,8 +24,8 @@ I tried simple serialport communication program on my board (Feather M0) and it 
 
 The ATSAM series clock supply system is divided into 3 stages.
 
-1. "Clock Source" that generates (crystal or PLL) the clock.
-2. "Clock Generator" that adjust (prescale, etc.) the clock.
+1. "Clock Source" that generates the clock. (Crystal or Lock-Loop)
+2. "Clock Generator" that adjust (Prescale, etc.) the clock. (GCLK)
 3. "Peripherals" that use clock.
 
 The SAMD21 uses clock source that always outputs 48MHz, usually called "DFLL", and clock generator called "GCLK0" to generate a 48MHz core clock.

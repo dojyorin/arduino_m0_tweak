@@ -16,10 +16,9 @@ namespace m0tweak{
         /**
         * Change the operating frequency of CPU.
         * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
-        * Executing this function changes the clock source configuration.
-        * Be sure to read the README.
-        * <CAUTION> Overclock at your own risk!
+        * !!CAUTION!! Overclock at your own risk! Be sure to read the README!
         * @param f CPU frequency.
+        * @see https://github.com/dojyorin/arduino_m0_tweak/tree/dev#overclock
         */
         void setFrequency(uint8_t f);
     }
@@ -31,7 +30,6 @@ namespace m0tweak{
         /**
         * Change the ADC sampling resolution.
         * Configurable value is `8` / `10` / `12` / `16` bits.
-        * Only in `16` bits operation, it samples twice and output the average value.
         * @param n Number of sampling bits.
         */
         void setResolution(uint8_t n);
