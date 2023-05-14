@@ -45,7 +45,7 @@ In this library, executing the core clock setting function configures to use "GC
 ```mermaid
 flowchart LR
 
-DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
+Crystal --> DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
 ```
 
 **After**
@@ -53,7 +53,7 @@ DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
 ```mermaid
 flowchart LR
 
-DFLL --"48MHz"--> GCLK4 --"1/48"--> FDPLL --"1~96MHz"--> GCLK0 --"1/1"--> CPU
+Crystal --> DFLL --"48MHz"--> GCLK4 --"1/48"--> FDPLL --"1~96MHz"--> GCLK0 --"1/1"--> CPU
 DFLL --"48MHz"--> GCLK5 --"1/1"--> USB
 ```
 
