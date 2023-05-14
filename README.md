@@ -20,7 +20,7 @@ Other source files are for internal use and should not normally be include.
 **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
 **I take no responsibility if the MCU burns or bricks.**
 
-I tried simple serialport communication program on my board (Feather M0) and it worked up to 78MHz, but when set it to 80MHz the serialport connection broke.
+I tried simple serialport communication program on my board (Feather M0) and it worked up to 78 MHz, but when set it to 80 MHz the serialport connection broke.
 
 The ATSAM series clock supply system is divided into 3 stages.
 
