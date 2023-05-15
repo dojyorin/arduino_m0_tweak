@@ -20,7 +20,7 @@ namespace m0tweak{
         * **I take no responsibility if the MCU burns or bricks.**
         * **Be sure to read the README.**
         * @param f CPU frequency.
-        * @see https://github.com/dojyorin/arduino_m0_tweak/tree/dev#overclock
+        * @see https://github.com/dojyorin/arduino_m0_tweak/blob/master/README.md#overclock
         */
         void setFrequency(uint8_t f);
     }
