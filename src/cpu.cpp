@@ -51,4 +51,7 @@ void m0tweak::m0cpu::setFrequency(uint8_t f){
     syncWait();
 
     USBDevice.attach();
+
+    // SysTick->LOAD = f * 1000 - 1;
+    // SysTick->VAL = 0;
 }

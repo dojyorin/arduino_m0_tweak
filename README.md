@@ -36,6 +36,9 @@ ClockSource --> ClockGenerator --> Peripherals
 ClockGenerator --"only FLL/PLL"--> ClockSource
 ```
 
+### SysTick
+Overclocking or underclocking can cause the SysTick timer to drift.
+
 ### ClockSource
 There are total of 7 clock sources.
 To operate the DFLL and FDPLL, must be input the clock from crystal oscillator or clock generator.
@@ -64,6 +67,8 @@ Some of which are preconfigured within the Arduino.
 |GCLK5|-|-|
 |GCLK6|-|-|
 |GCLK7|-|-|
+
+GCLK4/5 may already be used on boards with a special clock generation system, so there is no guarantee that it will work on all boards.
 <!-- WIP:END -->
 
 The SAMD21 uses clock source that always outputs 48MHz, usually called "DFLL", and clock generator called "GCLK0" to generate a 48MHz core clock.
