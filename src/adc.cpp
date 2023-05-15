@@ -5,8 +5,6 @@ namespace{
     constexpr auto RES_10BIT = 10;
     constexpr auto RES_12BIT = 12;
     constexpr auto RES_16BIT = 16;
-    constexpr auto DELAY_0US = 0;
-    constexpr auto DELAY_16US = 32;
 
     void syncWait(){
         while(ADC->STATUS.bit.SYNCBUSY);
@@ -22,7 +20,7 @@ void m0tweak::m0adc::setResolution(uint8_t n){
     syncWait();
 
     ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-    ADC->SAMPCTRL.reg = DELAY_0US;
+    ADC->SAMPCTRL.bit.SAMPLEN = 0;
 
     if(n == RES_8BIT){
         ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
@@ -36,7 +34,7 @@ void m0tweak::m0adc::setResolution(uint8_t n){
     else if(n == RES_16BIT){
         ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
         ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
-        ADC->SAMPCTRL.reg = DELAY_16US;
+        ADC->SAMPCTRL.bit.SAMPLEN = 32;
     }
 
     ADC->CTRLA.bit.ENABLE = 1;
