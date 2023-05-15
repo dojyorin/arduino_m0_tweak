@@ -38,9 +38,6 @@ void m0tweak::m0cpu::setFrequency(uint8_t f){
     GCLK->GENCTRL.reg = GCLK_GENCTRL_ID(0) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN;
     syncWait();
 
-    GCLK->CLKCTRL.reg = GCLK_CLKCTRL_ID_USB | GCLK_CLKCTRL_GEN_GCLK0;
-    while(GCLK->CLKCTRL.bit.CLKEN);
-
     GCLK->GENDIV.reg = GCLK_GENDIV_ID(5) | GCLK_GENDIV_DIV(1);
     syncWait();
 
