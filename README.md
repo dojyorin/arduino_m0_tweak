@@ -24,9 +24,47 @@ I tried simple serialport communication program on my board (Feather M0) and it 
 
 The ATSAM series clock supply system is divided into 3 stages.
 
-1. "Clock Source" that generates the clock. (Crystal or Lock-Loop)
-2. "Clock Generator" that adjust (Prescale, etc.) the clock. (GCLK)
+1. "Clock Source" that generates the clock.
+2. "Clock Generator" that adjust (Prescale, etc.) the clock.
 3. "Peripherals" that use clock.
+
+<!-- WIP:START -->
+```mermaid
+flowchart LR
+
+ClockSource --> ClockGenerator --> Peripherals
+ClockGenerator --"only FLL/PLL"--> ClockSource
+```
+
+### ClockSource
+There are total of 7 clock sources.
+To operate the DFLL and FDPLL, must be input the clock from crystal oscillator or clock generator.
+
+|ClockSource|Frequency|In/Ex|Description|
+|:--|:--|:--|:--|
+|OSC32K|32.768 KHz|Internal|RC oscillator|
+|OSCULP32K|32.768 KHz|Internal|RC oscillator, ultra low power|
+|OSC8M|8 MHz|Internal|RC oscillator|
+|XOSC32K|32.768 KHz|External|Crystal oscillator|
+|XOSC|0.4~32 MHz|External|Crystal oscillator|
+|DFLL|48MHz|Internal|FLL, Must be input the clock|
+|FDPLL|0~96 MHz|Internal|PLL, Must be input the clock|
+
+### ClockGenerator
+There are total of 8 clock generators.
+Some of which are preconfigured within the Arduino.
+
+|ClockGenerator|Source|Usage|
+|:--|:--|:--|
+|GCLK0|DFLL|CPU, USB, and many other peripherals|
+|GCLK1|OSC32K or XOSC32K|DFLL|
+|GCLK2|OSCULP32K|-|
+|GCLK3|OSC8M|-|
+|GCLK4|-|-|
+|GCLK5|-|-|
+|GCLK6|-|-|
+|GCLK7|-|-|
+<!-- WIP:END -->
 
 The SAMD21 uses clock source that always outputs 48MHz, usually called "DFLL", and clock generator called "GCLK0" to generate a 48MHz core clock.
 
