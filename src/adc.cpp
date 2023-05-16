@@ -6,8 +6,14 @@ namespace{
     constexpr auto RES_12BIT = 12;
     constexpr auto RES_16BIT = 16;
 
-    void syncWait(){
+    void syncBusy(){
         while(ADC->STATUS.bit.SYNCBUSY);
+    }
+
+    void configurePrecision(uint16_t resolution, uint8_t sample, uint8_t duration){
+        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | resolution;
+        ADC->AVGCTRL.reg = sample | ADC_AVGCTRL_ADJRES(0);
+        ADC->SAMPCTRL.reg = ADC_SAMPCTRL_SAMPLEN(duration);
     }
 }
 
@@ -16,27 +22,22 @@ void m0tweak::m0adc::setResolution(uint8_t n){
         return;
     }
 
-    ADC->CTRLA.bit.ENABLE = 0;
-    syncWait();
-
-    ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);
-    ADC->SAMPCTRL.bit.SAMPLEN = 0;
+    ADC->CTRLA.reg = ADC_CTRLA_RESETVALUE;
+    syncBusy();
 
     if(n == RES_8BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
+        configurePrecision(ADC_CTRLB_RESSEL_8BIT, ADC_AVGCTRL_SAMPLENUM_1, 0);
     }
     else if(n == RES_10BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_10BIT;
+        configurePrecision(ADC_CTRLB_RESSEL_10BIT, ADC_AVGCTRL_SAMPLENUM_1, 0);
     }
     else if(n == RES_12BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_12BIT;
+        configurePrecision(ADC_CTRLB_RESSEL_12BIT, ADC_AVGCTRL_SAMPLENUM_1, 0);
     }
     else if(n == RES_16BIT){
-        ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_16BIT;
-        ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_2 | ADC_AVGCTRL_ADJRES(1);
-        ADC->SAMPCTRL.bit.SAMPLEN = 32;
+        configurePrecision(ADC_CTRLB_RESSEL_16BIT, ADC_AVGCTRL_SAMPLENUM_2, 32);
     }
 
-    ADC->CTRLA.bit.ENABLE = 1;
-    syncWait();
+    ADC->CTRLA.reg = ADC_CTRLA_ENABLE;
+    syncBusy();
 }
