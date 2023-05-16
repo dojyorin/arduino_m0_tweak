@@ -50,18 +50,22 @@ To operate the DFLL and FDPLL, must be input the clock from crystal oscillator o
 |OSC8M|8 MHz|Internal|RC oscillator|
 |XOSC32K|32.768 KHz|External|Crystal oscillator|
 |XOSC|0.4~32 MHz|External|Crystal oscillator|
-|DFLL|48MHz|Internal|FLL, Must be input the clock|
+|DFLL|48 MHz|Internal|FLL, Must be input the clock|
 |FDPLL|0~96 MHz|Internal|PLL, Must be input the clock|
 
 ### ClockGenerator
 There are total of 8 clock generators.
 Some of which are preconfigured within the Arduino.
 
+The GCLK1 input is XOSC32K when using the external oscillator and OSC32K when using the internal oscillator.
+
+This is specified primarily at compile time with the `CRYSTALLESS` macro.
+
 |ClockGenerator|Source|Usage|
 |:--|:--|:--|
 |GCLK0|DFLL|CPU, USB, and many other peripherals|
-|GCLK1|OSC32K or XOSC32K|DFLL|
-|GCLK2|OSCULP32K|-|
+|GCLK1|OSC32K / XOSC32K|DFLL|
+|GCLK2|OSCULP32K|WDT|
 |GCLK3|OSC8M|-|
 |GCLK4|-|-|
 |GCLK5|-|-|
