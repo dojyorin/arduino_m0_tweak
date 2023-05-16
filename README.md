@@ -113,14 +113,13 @@ As result, sampling may feel slower than other MCUs in many situations.
 
 The hardware resolution of SAMD21 is 12 bits, but by using the average output, the resolution can be artificially increased to 16 bits.
 
-This library provides function to set single output and no wait when the resolution is 8, 10, or 12 bits, and average output and set the wait to 16 clocks when the resolution is 16 bits.
+This library provides function to set direct output and no wait when the resolution is 8, 10, or 12 bits, and average output and set the wait to 16 clocks when the resolution is 16 bits.
 
 ```mermaid
 flowchart LR
 
-ADC --> r{Resolution}
-r --"8/10/12 bits"--> a["Output: Single\nWait: 0"]
-r --"16 bits"--> b["Output: Average\nWait: 16 clock"]
+ADC --"8/10/12 bits"--> a["Output: Direct\nWait: 0"]
+ADC --"16 bits"--> b["Output: Average\nWait: 16 clock"]
 ```
 
 # API
@@ -131,11 +130,11 @@ r --"16 bits"--> b["Output: Average\nWait: 16 clock"]
     - `void`
 
 Change the operating frequency of CPU.
-Configurable range is `16` ~ `96` MHz in `1` MHz steps.
+Configurable range is `1` ~ `96` MHz in `1` MHz steps.
 
 ## `m0tweak::m0adc::setResolution(n)`
 - Arguments
-    - `n` : `uint8_t` ... Number of sampling bits.
+    - `n` : `uint8_t` ... Number of sampling resolution bits.
 - Result
     - `void`
 
