@@ -8,8 +8,8 @@ Easily hardware behavior tweak, such as CPU overclocking, ADC acceleration, etc.
 # Example
 
 ```c++
-m0tweak::m0cpu::setFrequency(72);
-m0tweak::m0adc::setResolution(12);
+m0tweak::cpuFrequency(72);
+m0tweak::adcPrecision(12);
 ```
 
 # Details
@@ -61,16 +61,16 @@ Some of the 8 clock generators are preconfigured internal the Arduino platform.
 The GCLK1 input is XOSC32K when using the external oscillator and OSC32K when using the internal oscillator.
 This is specified primarily at compile time with the `CRYSTALLESS` macro.
 
-|Generator|Source|Usage|
-|:--|:--|:--|
-|GCLK0|DFLL|CPU, USB, etc.|
-|GCLK1|OSC32K / XOSC32K|DFLL|
-|GCLK2|OSCULP32K|(WDT)|
-|GCLK3|OSC8M|-|
-|GCLK4|-|-|
-|GCLK5|-|-|
-|GCLK6|-|-|
-|GCLK7|-|-|
+|Generator|Source|Divide|Frequency|Usage|
+|:--|:--|:--|:--|:--|
+|GCLK0|DFLL|1/1|48 MHz|CPU, USB, etc.|
+|GCLK1|OSC32K / XOSC32K|1/1|32.768 kHz|DFLL|
+|GCLK2|OSCULP32K|1/1|32.768 kHz|(WDT)|
+|GCLK3|OSC8M|1/1|8 MHz|-|
+|GCLK4|-|-|-|-|
+|GCLK5|-|-|-|-|
+|GCLK6|-|-|-|-|
+|GCLK7|-|-|-|-|
 
 <!-- ### SysTick
 Overclocking or underclocking can cause the SysTick timer to drift. -->
@@ -93,7 +93,7 @@ But by changing the GCLK0 clock source to FDPLL, the clock supplied to the perip
 
 So to solve this problem, I enabled GCLK5, which uses DFLL, just like GCLK0 before the change.
 
-When overclocking, it is recommended to change the clock generator used by the peripheral from GCLK0 to GCLK5.
+When overclocking, it's recommended to change the clock generator used by the peripheral from GCLK0 to GCLK5.
 
 This is especially essential for timing-sensitive peripherals such as USB.
 (USB is set to use GCLK5 in the function)
@@ -113,7 +113,7 @@ This is especially essential for timing-sensitive peripherals such as USB.
 ```mermaid
 flowchart LR
 
-OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\n32.768 kHz\nDIV 1"] --> DFLL["DFLL\n48 MHz"] --> GCLK0["GCLK0\n48 MHz\nDIV 1"] --> CPU["CPU\n48 MHz"] & USB["USB\n48 MHz"]
+OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\nDIV 1\n32.768 kHz"] --> DFLL["DFLL\n48 MHz"] --> GCLK0["GCLK0\nDIV 1\n48 MHz"] --> CPU["CPU\n48 MHz"] & USB["USB\n48 MHz"]
 ```
 
 ### After
@@ -131,14 +131,14 @@ OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\n32.768 kHz\nDIV 1"] --> DFLL["
 ```mermaid
 flowchart LR
 
-OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\n32.768 kHz\nDIV 1"] --> DFLL["DFLL\n48 MHz"] --> GCLK4["GCLK4\n1 MHz\nDIV 48"] --> FDPLL["FDPLL\n1~96 MHz"] --> GCLK0["GCLK0\n1~96 MHz\nDIV 1"] --> CPU["CPU\n1~96 MHz"]
-DFLL --> GCLK5["GCLK5\n48 MHz\nDIV 1"] --> USB["USB\n48 MHz"]
+OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\nDIV 1\n32.768 kHz"] --> DFLL["DFLL\n48 MHz"] --> GCLK4["GCLK4\nDIV 48\n1 MHz"] --> FDPLL["FDPLL\n1~96 MHz"] --> GCLK0["GCLK0\nDIV 1\n1~96 MHz"] --> CPU["CPU\n1~96 MHz"]
+DFLL --> GCLK5["GCLK5\nDIV 1\n48 MHz"] --> USB["USB\n48 MHz"]
 ```
 
 # ADC
 SAMD21 normally performs two consecutive 10 bits resolution samplings and returns the average value.
 
-There is 31.5 clock wait between samples to get the average value.
+There's 31.5 clock wait between samples to get the average value.
 
 As result, sampling may feel slower than other MCUs in many situations.
 
@@ -154,22 +154,22 @@ ADC --"16 bits"--> b["Output: Average\nWait: 16 clock"]
 ```
 
 # API
-## `m0tweak::m0cpu::setFrequency(f)`
+## `m0tweak::cpuFrequency(f)`
 - Arguments
-    - `f` : `uint8_t` ... CPU frequency.
+    - `f` : `uint8_t` ... CPU frequency
 - Result
     - `void`
 
-Change the CPU frequency.
+Set the CPU frequency.
 Configurable range is `1` ~ `96` MHz in `1` MHz steps.
 
-## `m0tweak::m0adc::setResolution(n)`
+## `m0tweak::adcPrecision(n)`
 - Arguments
-    - `n` : `uint8_t` ... Number of sampling resolution bits.
+    - `n` : `uint8_t` ... Number of sampling resolution bits
 - Result
     - `void`
 
-Change the ADC sampling resolution.
+Set the ADC sampling resolution.
 Configurable value is `8` / `10` / `12` / `16` bits.
 
 # Gratitude
