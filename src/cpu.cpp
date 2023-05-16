@@ -1,7 +1,7 @@
 #include "./arduino_m0_tweak.hpp"
 
 namespace{
-    constexpr auto FREQ_MIN = 16;
+    constexpr auto FREQ_MIN = 1;
     constexpr auto FREQ_MAX = 96;
 
     void syncWait(){
