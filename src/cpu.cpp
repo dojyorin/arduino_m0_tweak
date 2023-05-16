@@ -28,8 +28,8 @@ void m0tweak::cpuFrequency(uint8_t f){
 
     SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(f - 1);
     NVMCTRL->CTRLB.reg = NVMCTRL_CTRLB_RWS((f + 23) / 24 - 1);
-    // SysTick->LOAD = f * 1000 - 1;
-    // SysTick->VAL = 0;
+    SysTick->LOAD = f * 1000 - 1;
+    SysTick->VAL = 0;
 
     if(!SYSCTRL->DPLLSTATUS.bit.ENABLE){
         SYSCTRL->DPLLCTRLB.reg = SYSCTRL_DPLLCTRLB_FILTER_DEFAULT | SYSCTRL_DPLLCTRLB_REFCLK_GCLK;
