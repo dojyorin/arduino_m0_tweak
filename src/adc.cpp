@@ -10,10 +10,9 @@ namespace{
         while(ADC->STATUS.bit.SYNCBUSY);
     }
 
-    void sampleMethod(uint16_t resolution, uint8_t sample, uint8_t wait, uint8_t coefficient){
+    void sampleMethod(uint16_t resolution, uint8_t sample){
         ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | resolution;
-        ADC->AVGCTRL.reg = sample | ADC_AVGCTRL_ADJRES(coefficient);
-        ADC->SAMPCTRL.reg = ADC_SAMPCTRL_SAMPLEN(wait);
+        ADC->AVGCTRL.reg = sample | ADC_AVGCTRL_ADJRES(0);
     }
 }
 
@@ -26,16 +25,20 @@ void m0tweak::adcPrecision(uint8_t n){
     syncBusy();
 
     if(n == RES_8BIT){
-        sampleMethod(ADC_CTRLB_RESSEL_8BIT, ADC_AVGCTRL_SAMPLENUM_1, 0, 0);
+        sampleMethod(ADC_CTRLB_RESSEL_8BIT, ADC_AVGCTRL_SAMPLENUM_1);
     }
     else if(n == RES_10BIT){
-        sampleMethod(ADC_CTRLB_RESSEL_10BIT, ADC_AVGCTRL_SAMPLENUM_1, 0, 0);
+        sampleMethod(ADC_CTRLB_RESSEL_10BIT, ADC_AVGCTRL_SAMPLENUM_1);
     }
     else if(n == RES_12BIT){
-        sampleMethod(ADC_CTRLB_RESSEL_12BIT, ADC_AVGCTRL_SAMPLENUM_1, 0, 0);
+        sampleMethod(ADC_CTRLB_RESSEL_12BIT, ADC_AVGCTRL_SAMPLENUM_1);
     }
     else if(n == RES_16BIT){
-        sampleMethod(ADC_CTRLB_RESSEL_16BIT, ADC_AVGCTRL_SAMPLENUM_2, 32, 1);
+        sampleMethod(ADC_CTRLB_RESSEL_16BIT, ADC_AVGCTRL_SAMPLENUM_2);
+    }
+
+    if(ADC->SAMPCTRL.bit.SAMPLEN){
+        ADC->SAMPCTRL.reg = ADC_SAMPCTRL_SAMPLEN(0);
     }
 
     ADC->CTRLA.reg = ADC_CTRLA_ENABLE;
