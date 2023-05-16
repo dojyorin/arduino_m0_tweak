@@ -14,8 +14,8 @@ namespace m0tweak{
     */
     namespace m0cpu{
         /**
-        * Change the operating frequency of CPU.
-        * Configurable range is `16` ~ `96` MHz in `1` MHz steps.
+        * Change the CPU frequency.
+        * Configurable range is `1` ~ `96` MHz in `1` MHz steps.
         * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
         * **I take no responsibility if the MCU burns or bricks.**
         * **Be sure to read the README.**
@@ -32,7 +32,7 @@ namespace m0tweak{
         /**
         * Change the ADC sampling resolution.
         * Configurable value is `8` / `10` / `12` / `16` bits.
-        * @param n Number of sampling bits.
+        * @param n Number of sampling resolution bits.
         */
         void setResolution(uint8_t n);
     }

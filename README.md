@@ -160,7 +160,7 @@ ADC --"16 bits"--> b["Output: Average\nWait: 16 clock"]
 - Result
     - `void`
 
-Change the operating frequency of CPU.
+Change the CPU frequency.
 Configurable range is `1` ~ `96` MHz in `1` MHz steps.
 
 ## `m0tweak::m0adc::setResolution(n)`
