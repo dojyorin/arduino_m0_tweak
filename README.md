@@ -92,7 +92,7 @@ In this library, executing the core clock setting function configures to use "GC
 ```mermaid
 flowchart LR
 
-Crystal --> DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
+OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\nDIV 1\n32.768 kHz"] --> DFLL["DFLL\n48 MHz"] --> GCLK0["GCLK0\nDIV 1\n48 MHz"] --> CPU["CPU\n48 MHz"] & USB["USB\n48 MHz"]
 ```
 
 **After**
@@ -100,8 +100,8 @@ Crystal --> DFLL --"48MHz"--> GCLK0 --"1/1"--> CPU & USB
 ```mermaid
 flowchart LR
 
-Crystal --> DFLL --"48MHz"--> GCLK4 --"1/48"--> FDPLL --"1~96MHz"--> GCLK0 --"1/1"--> CPU
-DFLL --"48MHz"--> GCLK5 --"1/1"--> USB
+OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\nDIV 1\n32.768 kHz"] --> DFLL["DFLL\n48 MHz"] --> GCLK4["GCLK4\nDIV 48\n1 MHz"] --> FDPLL["FDPLL\n1~96 MHz"] --> GCLK0["GCLK0\nDIV 1\n1~96 MHz"] --> CPU["CPU\n1~96 MHz"]
+DFLL --> GCLK5["GCLK5\nDIV 1\n48 MHz"] --> USB["USB\n48 MHz"]
 ```
 
 ## ADC
