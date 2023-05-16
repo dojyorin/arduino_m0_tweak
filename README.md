@@ -99,16 +99,16 @@ This is especially essential for timing-sensitive peripherals such as USB.
 (USB is set to use GCLK5 in the function)
 
 ### Before
-|Generator|Source|Usage|
-|:--|:--|:--|
-|GCLK0|DFLL|CPU, USB, etc.|
-|GCLK1|OSC32K / XOSC32K|DFLL|
-|GCLK2|OSCULP32K|(WDT)|
-|GCLK3|OSC8M|-|
-|GCLK4|-|-|
-|GCLK5|-|-|
-|GCLK6|-|-|
-|GCLK7|-|-|
+|Generator|Source|Divide|Frequency|Usage|
+|:--|:--|:--|:--|:--|
+|GCLK0|DFLL|1/1|48 MHz|CPU, USB, etc.|
+|GCLK1|OSC32K / XOSC32K|1/1|32.768 kHz|DFLL|
+|GCLK2|OSCULP32K|1/1|32.768 kHz|(WDT)|
+|GCLK3|OSC8M|1/1|8 MHz|-|
+|GCLK4|-|-|-|-|
+|GCLK5|-|-|-|-|
+|GCLK6|-|-|-|-|
+|GCLK7|-|-|-|-|
 
 ```mermaid
 flowchart LR
@@ -117,16 +117,16 @@ OSC32K["(X)OSC32K\n32.768 kHz"] --> GCLK1["GCLK1\n32.768 kHz\nDIV 1"] --> DFLL["
 ```
 
 ### After
-|Generator|Source|Usage|
-|:--|:--|:--|
-|GCLK0|FDPLL|CPU, etc.|
-|GCLK1|OSC32K / XOSC32K|DFLL|
-|GCLK2|OSCULP32K|(WDT)|
-|GCLK3|OSC8M|-|
-|GCLK4|DFLL|FDPLL|
-|GCLK5|DFLL|USB, timing-sensitive peripherals|
-|GCLK6|-|-|
-|GCLK7|-|-|
+|Generator|Source|Divide|Frequency|Usage|
+|:--|:--|:--|:--|:--|
+|GCLK0|FDPLL|1/1|1~96 MHz|CPU, etc.|
+|GCLK1|OSC32K / XOSC32K|1/1|32.768 kHz|DFLL|
+|GCLK2|OSCULP32K|1/1|32.768 kHz|(WDT)|
+|GCLK3|OSC8M|1/1|8 MHz|-|
+|GCLK4|DFLL|1/48|1 MHz|FDPLL|
+|GCLK5|DFLL|1/1|48 MHz|USB, timing-sensitive peripherals|
+|GCLK6|-|-|-|-|
+|GCLK7|-|-|-|-|
 
 ```mermaid
 flowchart LR

@@ -26,14 +26,16 @@ void m0tweak::m0cpu::setFrequency(uint8_t f){
         return;
     }
 
-    USBDevice.detach();
-
-    NVMCTRL->CTRLB.bit.RWS = (f + 23) / 24 - 1;
-
     SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(f - 1);
+    NVMCTRL->CTRLB.bit.RWS = (f + 23) / 24 - 1;
+    // reg = NVMCTRL_CTRLB_RWS()
+
+    if(!SYSCTRL->DPLLSTATUS.bit.ENABLE){
     SYSCTRL->DPLLCTRLB.reg = SYSCTRL_DPLLCTRLB_FILTER_DEFAULT | SYSCTRL_DPLLCTRLB_REFCLK_GCLK;
     SYSCTRL->DPLLCTRLA.reg = SYSCTRL_DPLLCTRLA_ENABLE;
     while(!SYSCTRL->DPLLSTATUS.bit.LOCK & !SYSCTRL->DPLLSTATUS.bit.CLKRDY);
+
+    USBDevice.detach();
 
     activateGenerator(4, 48, GCLK_GENCTRL_SRC_DFLL48M);
     activateGenerator(5, 1, GCLK_GENCTRL_SRC_DFLL48M);
@@ -45,4 +47,5 @@ void m0tweak::m0cpu::setFrequency(uint8_t f){
 
     // SysTick->LOAD = f * 1000 - 1;
     // SysTick->VAL = 0;
+    }
 }
