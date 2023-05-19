@@ -15,15 +15,21 @@ namespace m0tweak{
     * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
     * **I take no responsibility if the MCU burns or bricks.**
     * **Be sure to read the README.**
-    * @param f CPU frequency
     * @see https://github.com/dojyorin/arduino_m0_tweak/blob/master/README.md#overclock
+    * @example
+    * ```c++
+    * m0tweak::cpuFrequency(72);
+    * ```
     */
     void cpuFrequency(uint8_t f);
 
     /**
     * Set the ADC sampling resolution.
     * Configurable value is `8` / `10` / `12` / `16` bits.
-    * @param n Number of sampling resolution bits
+    * @example
+    * ```c++
+    * m0tweak::adcPrecision(12);
+    * ```
     */
     void adcPrecision(uint8_t n);
 }

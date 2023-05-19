@@ -5,13 +5,6 @@
 Tweak the hardware behavior of SAMD21.
 Easily hardware behavior tweak, such as CPU overclocking, ADC acceleration, etc.
 
-# Example
-
-```c++
-m0tweak::cpuFrequency(72);
-m0tweak::adcPrecision(12);
-```
-
 # Details
 The only export of this library will be [`arduino_m0_tweak.hpp`](./src/arduino_m0_tweak.hpp).
 Other source files are for internal use and should not normally be include.
@@ -151,20 +144,20 @@ ADC[ADC] --> 1["Fast\n8/10/12 bits\nSample: 1"] & 2["Quality\n16 bits\nSample: 2
 # API
 ## `m0tweak::cpuFrequency(f)`
 - Arguments
-    - `f` : `uint8_t` ... CPU frequency
+    - `f` : `uint8_t` ... CPU frequency.
 - Result
     - `void`
 
-Set the CPU frequency.
+Set CPU frequency.
 Configurable range is `1` ~ `96` MHz in `1` MHz steps.
 
 ## `m0tweak::adcPrecision(n)`
 - Arguments
-    - `n` : `uint8_t` ... Number of sampling resolution bits
+    - `n` : `uint8_t` ... Number of bits that sampling resolution.
 - Result
     - `void`
 
-Set the ADC sampling resolution.
+Set ADC sampling resolution.
 Configurable value is `8` / `10` / `12` / `16` bits.
 
 # Gratitude
