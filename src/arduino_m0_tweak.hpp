@@ -5,15 +5,15 @@
 #include "USB/USBAPI.h"
 
 /**
-* Tweak the hardware behavior of SAMD21.
+* Bring out hardware performance of SAMD21 such as overclock.
 * @see https://github.com/dojyorin/arduino_m0_tweak
 */
 namespace m0tweak{
     /**
-    * Set the CPU frequency.
+    * Set CPU frequency.
     * Configurable range is `1` ~ `96` MHz in `1` MHz steps.
-    * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding the risk.**
-    * **I take no responsibility if the MCU burns or bricks.**
+    * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding risk.**
+    * **I take no responsibility if MCU burn or brick.**
     * **Be sure to read the README.**
     * @see https://github.com/dojyorin/arduino_m0_tweak/blob/master/README.md#overclock
     * @example
@@ -24,7 +24,7 @@ namespace m0tweak{
     void cpuFrequency(uint8_t f);
 
     /**
-    * Set the ADC sampling resolution.
+    * Set ADC sampling resolution.
     * Configurable value is `8` / `10` / `12` / `16` bits.
     * @example
     * ```c++
