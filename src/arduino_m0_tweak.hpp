@@ -14,7 +14,7 @@ namespace m0tweak{
     * Configurable range is `1` ~ `96` MHz in `1` MHz steps.
     * **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding risk.**
     * **I take no responsibility if MCU burn or brick.**
-    * **Be sure to read the README.**
+    * **Be sure to read notes in link below.**
     * @see https://github.com/dojyorin/arduino_m0_tweak/blob/master/README.md#overclock
     * @example
     * ```c++

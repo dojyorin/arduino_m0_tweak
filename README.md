@@ -3,13 +3,12 @@
 ![actions:release](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/release.yaml/badge.svg)
 
 Bring out hardware performance of SAMD21 such as overclock.
-Easily performance tweak, such as CPU overclocking, ADC acceleration, etc...
+Easily performance tweak such as CPU overclocking, ADC acceleration, etc...
 
 # Details
-The only export of this library is [`arduino_m0_tweak.hpp`](./src/arduino_m0_tweak.hpp).
-Other files are for internal use and should not be normally include.
+Want an easy performance boost? this library is for you!
 
-# Overclock
+# CPU
 **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding risk.**
 **I take no responsibility if MCU burn or brick.**
 
@@ -142,23 +141,7 @@ ADC[ADC] --> 1["Fast\n8/10/12 bits\nSample: 1"] & 2["Quality\n16 bits\nSample: 2
 ```
 
 # API
-## `m0tweak::cpuFrequency(f)`
-- Arguments
-    - `f` : `uint8_t` ... CPU frequency in MHz.
-- Result
-    - `void`
-
-Set CPU frequency.
-Configurable range is `1` ~ `96` MHz in `1` MHz steps.
-
-## `m0tweak::adcPrecision(n)`
-- Arguments
-    - `n` : `uint8_t` ... Number of bits that sampling resolution.
-- Result
-    - `void`
-
-Set ADC sampling resolution.
-Configurable value is `8` / `10` / `12` / `16` bits.
+See [`arduino_m0_tweak.hpp`](./src/arduino_m0_tweak.hpp) for details.
 
 # Gratitude
 This library is thanks to them, respectful.
