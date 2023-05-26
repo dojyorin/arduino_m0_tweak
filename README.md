@@ -6,6 +6,9 @@ Bring out hardware performance of SAMD21 such as overclock.
 Easily performance tweak such as CPU overclocking, ADC acceleration, etc...
 
 # Details
+Want an easy performance boost? this library is for you!
+
+# CPU
 **!!CAUTION!! Overclocking should be performed at your own risk after fully understanding risk.**
 **I take no responsibility if MCU burn or brick.**
 
