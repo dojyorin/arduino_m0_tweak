@@ -1,6 +1,8 @@
 # **Arduino M0 Tweak**
 ![actions:test](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/test.yaml/badge.svg)
 ![actions:release](https://github.com/dojyorin/arduino_m0_tweak/actions/workflows/release.yaml/badge.svg)
+![shields:license](https://img.shields.io/github/license/dojyorin/arduino_m0_tweak)
+![shields:release](https://img.shields.io/github/release/dojyorin/arduino_m0_tweak)
 
 Bring out hardware performance of SAMD21 such as overclock.
 Easily performance tweak such as CPU overclocking, ADC acceleration, etc...
