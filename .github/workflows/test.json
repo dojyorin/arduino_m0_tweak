@@ -24,7 +24,7 @@
     },
     "jobs": {
         "test": {
-            "name": "Test: ${{matrix.board.name}}",
+            "name": "test: ${{matrix.board.name}}",
             "runs-on": "ubuntu-latest",
             "strategy": {
                 "fail-fast": true,
