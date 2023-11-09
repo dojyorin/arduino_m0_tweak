@@ -1,7 +1,7 @@
 #include "./arduino_m0_tweak.hpp"
 
-void m0tweak::adcPrecision(uint8_t n){
-    if(n != 8 && n != 10 && n != 12 && n != 16){
+void m0tweak::adcPrecision(uint8_t bit){
+    if(bit != 8 && bit != 10 && bit != 12 && bit != 16){
         return;
     }
 
@@ -10,7 +10,7 @@ void m0tweak::adcPrecision(uint8_t n){
 
     ADC->SAMPCTRL.reg = ADC_SAMPCTRL_SAMPLEN(0);
 
-    switch(n){
+    switch(bit){
         case 8: {
             ADC->CTRLB.reg = ADC_CTRLB_PRESCALER_DIV64 | ADC_CTRLB_RESSEL_8BIT;
             ADC->AVGCTRL.reg = ADC_AVGCTRL_SAMPLENUM_1 | ADC_AVGCTRL_ADJRES(0);

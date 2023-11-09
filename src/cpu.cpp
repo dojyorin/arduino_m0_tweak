@@ -1,7 +1,7 @@
 #include "./arduino_m0_tweak.hpp"
 
-void m0tweak::cpuFrequency(uint8_t f){
-    if(f < 1 || 96 < f){
+void m0tweak::cpuFrequency(uint8_t frequency){
+    if(frequency < 1 || 96 < frequency){
         return;
     }
 
@@ -25,8 +25,8 @@ void m0tweak::cpuFrequency(uint8_t f){
     GCLK->CLKCTRL.reg = GCLK_CLKCTRL_ID_FDPLL | GCLK_CLKCTRL_GEN_GCLK4 | GCLK_CLKCTRL_CLKEN;
     while(GCLK->STATUS.bit.SYNCBUSY);
 
-    NVMCTRL->CTRLB.reg = NVMCTRL_CTRLB_RWS((f + 23) / 24 - 1);
-    SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(f - 1);
+    NVMCTRL->CTRLB.reg = NVMCTRL_CTRLB_RWS((frequency + 23) / 24 - 1);
+    SYSCTRL->DPLLRATIO.reg = SYSCTRL_DPLLRATIO_LDR(frequency - 1);
     SYSCTRL->DPLLCTRLA.reg = SYSCTRL_DPLLCTRLA_ENABLE;
     SYSCTRL->DPLLCTRLB.reg = SYSCTRL_DPLLCTRLB_FILTER(SYSCTRL_DPLLCTRLB_FILTER_DEFAULT_Val) | SYSCTRL_DPLLCTRLB_REFCLK_GCLK;
     while(!SYSCTRL->DPLLSTATUS.bit.LOCK & !SYSCTRL->DPLLSTATUS.bit.CLKRDY);
@@ -36,7 +36,7 @@ void m0tweak::cpuFrequency(uint8_t f){
     GCLK->GENCTRL.reg = GCLK_GENCTRL_ID(0) | GCLK_GENCTRL_SRC_FDPLL | GCLK_GENCTRL_IDC | GCLK_GENCTRL_GENEN;
     while(GCLK->STATUS.bit.SYNCBUSY);
 
-    SysTick->LOAD = f * 1000 - 1;
+    SysTick->LOAD = frequency * 1000 - 1;
     SysTick->VAL = 0;
 
     USBDevice.attach();
